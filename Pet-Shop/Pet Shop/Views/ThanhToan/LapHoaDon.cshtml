@@ -1,0 +1,118 @@
+﻿@model Pet_Shop.Models.HoaDon
+@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "ThanhToan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="payment">
+    <div class="container">
+        <div class="payment-top-wrap">
+            <div class="payment-top">
+                <div class="payment-top-cart payment-top-item">
+                    <a href="cart.html" class="fas fa-shopping-cart"></a>
+                </div>
+                <div class="payment-top-payment payment-top-item">
+                    <a href="payment.html" class="fas fa-money-check-alt"></a>
+                </div>
+                <div class="payment-top-done payment-top-item">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <form action="@Url.Action("LapHoaDon","ThanhToan")" method="post">
+            <div class="payment-content row">
+                <div class="payment-content-left row" style="padding-right:0!important">
+                    @{Html.RenderAction("DsSPMua", "ThanhToan");}
+                    <div class="payment-content-left-information">
+                        <div class="payment-content-left-title">
+                            <h1>Thông tin mua hàng</h1>
+                            @if (!Request.IsAuthenticated)
+                            {
+                                <a class="fas fa-user" href="@Url.Action("Login", "Account", new { id = "loginLink", @class = "nav-link" })"> Đăng nhập</a>
+                            }
+                        </div>
+                        <div class="payment-content-left-input">
+
+                            @if (Request.IsAuthenticated)
+                            {
+                                <div class="payment-content-left-input-item">
+                                    @*<input type="text" placeholder="nhập họ và tên" name="text-name">*@
+                                    <p> Tên người nhận :</p>
+                                    @Html.EditorFor(model => model.TenNguoiNhan, new { placeholder = "Nhập họ và tên", name = "text-name", type = "text", value = User.Identity.GetUserName() })
+                                    @Html.ValidationMessageFor(model => model.TenNguoiNhan, "", new { @class = "text-danger" })
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="payment-content-left-input-item">
+                                    @*<input type="text" placeholder="Nhập họ và tên" name="text-name">*@
+                                    <p> Tên người nhận :</p>
+                                    @Html.EditorFor(model => model.TenNguoiNhan, new { placeholder = "Nhập họ và tên", name = "text-name", type = "text" })
+                                    @Html.ValidationMessageFor(model => model.TenNguoiNhan, "", new { @class = "text-danger" })
+                                </div>
+                            }
+                            @*<div class="payment-content-left-input-item">
+                        <p>Ngày Lập:</p>@Html.DisplayFor(model=>model.NgayLap)
+                    </div>*@
+                            <div class="payment-content-left-input-item">
+                                @*<input type="email" placeholder="Nhập email" name="text-email">*@
+                                <p> Email :</p>
+                                @Html.EditorFor(model => model.EmailNguoiNhan, new { placeholder = "Nhập email người nhận", name = "text-name", type = "text" })
+                                @Html.ValidationMessageFor(model => model.EmailNguoiNhan, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="payment-content-left-input-item">
+                                <p> Số điện thoại :</p>
+                                @*<input type="text" placeholder="Nhập số điện thoại" name="text-call">*@
+                                @Html.EditorFor(model => model.SDTNguoiNhan, new { placeholder = "Nhập SDT người nhận", name = "text-name", type = "text" })
+                                @Html.ValidationMessageFor(model => model.SDTNguoiNhan, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="payment-content-left-input-item">
+                                <p> Địa chỉ :</p>
+                                @*<input type="text" placeholder="Nhập địa chỉ" name="text-place">*@
+                                @Html.EditorFor(model => model.DiaChiGiao, new { placeholder = "Nhập địa chỉ giao", name = "text-name", type = "text" })
+                                @Html.ValidationMessageFor(model => model.DiaChiGiao, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="payment-content-left-input-item">
+                                <p> Ghi chú :</p>
+                                @*<textarea placeholder="Ghi chú cho đơn hàng" name="text-note" style="height: 83px;"></textarea>*@
+                                @Html.EditorFor(model => model.GhiChu, new { placeholder = "Ghi chú đơn hàng", name = "text-name", type = "textarea" })
+                                @Html.ValidationMessageFor(model => model.GhiChu, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="payment-content-left-payment">
+                        <div class="container">
+                            <h1>Thanh toán</h1>
+                            <div class="box">
+                                <input type="radio" name="select" id="option-1">
+                                <input type="radio" name="select" id="option-2">
+                                <label for="option-1" class="option-1">
+                                    <div class="dot"></div>
+                                    <div class="text">Chuyển khoản qua ngân hàng</div>
+                                    <i style="color: forestgreen; padding-left: 5px;" class="far fa-money-bill-alt"></i>
+                                </label>
+                                <div class="payment-content-left-payment-bank">
+                                    <p>Chủ TK: TRẦN TRUNG BẢO KHA<br>STK: 0271001099238</p>
+                                </div>
+                                <label for="option-2" class="option-2">
+                                    <div class="dot"></div>
+                                    <div class="text">Thanh toán bằng tiền mặt</div>
+                                    <i style="color: forestgreen; padding-left: 35px;" class="far fa-money-bill-alt"></i>
+                                </label>
+                            </div>
+                            <div class="payment-content-right-button">
+                                <button type="submit" value="ĐẶT HÀNG">ĐẶT HÀNG</button>
+                                <button><a style="color:white" href="@Url.Action("ThemSPGioHang","ThanhToan",new { @id = User.Identity.GetUserId() })">THÊM TỪ GIỎ HÀNG</a></button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>   
+        </form>
+    </div>
+</div>
+

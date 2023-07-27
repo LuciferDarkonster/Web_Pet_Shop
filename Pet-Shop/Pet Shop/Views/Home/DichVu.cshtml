@@ -1,0 +1,31 @@
+﻿@model PagedList.IPagedList<Pet_Shop.Models.DichVu>
+@*@model IEnumerable<Pet_Shop.Models.DoDungTC>*@
+@using PagedList.Mvc;
+@using PagedList;
+@{
+    ViewBag.Title = "Service";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Theme/css/StyleSheetDV.css" rel="stylesheet" />
+<div class="service">
+    @foreach (var item in Model)
+    {
+        <div class="service-ads row">
+            @*<a href="@Url.Action("ChiTietDichVu","Home", new { id = item.MaDV })">*@
+            <div class="service-ads-img">
+                <a href="@Url.Action("ChiTietDichVu","Home", new { id = item.MaDV })">
+                    <img src="@Url.Content(item.DoiTuongKD.AnhDaiDien)">
+                </a>
+            </div>
+            <div class="service-ads-content">
+                <a href="@Url.Action("ChiTietDichVu","Home", new { id = item.MaDV })">
+                    <h1>@Html.DisplayFor(modelItem => item.TenDV)</h1>
+                    <p>@Html.DisplayFor(modelItem => item.DoiTuongKD.MoTa)</p>
+                </a>
+                <button>Book lịch ngay</button>
+            </div>
+            @*</a>*@
+        </div>
+    }
+</div>
+@Html.PagedListPager(Model, page => Url.Action("DichVu", new { page, @class = "active" }))

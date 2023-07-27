@@ -1,0 +1,84 @@
+﻿@model PagedList.IPagedList<Pet_Shop.Models.DoDungTC>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin_PetShop.cshtml";
+}
+<h2>Đồ dùng thú cưng</h2>
+<p>
+    @Html.ActionLink("Tạo mới", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.TenDD)*@Tên đồ dùng
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.HangSX.TenNSX)*@ Tên nhà sản xuất
+        </th>
+        <th>
+            Thuộc loài
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.LoaiThuCung.TenLoai)*@Mô tả
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.DoiTuongKD.MoTa)*@Chi tiết
+        </th>
+
+        <th>
+            Đơn giá
+        </th>
+        <th>
+            Ảnh đại diện
+        </th>
+        <th>
+
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenDD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HangSX.TenNSX)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LoaiThuCung.TenLoai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DoiTuongKD.MoTa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DoiTuongKD.ChiTiet)
+            </td>
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.DoiTuongKD.DonGia)
+            </td>
+
+            @*<td>
+            @Html.DisplayFor(modelItem => item.DoiTuongKD.GiamGia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DoiTuongKD.TrangThai)
+        </td>*@
+            <td>
+                <img src="@Url.Content(item.DoiTuongKD.AnhDaiDien)" width="50%" height="50%" />
+            </td>
+
+
+            <td>
+                @Html.ActionLink("Sửa", "Edit", new { id = item.MaDD }) |
+                @Html.ActionLink("Chi tiết", "Details", new { id = item.MaDD }) |
+                @Html.ActionLink("Xóa", "Delete", new { id = item.MaDD })
+            </td>
+        </tr>
+    }
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))

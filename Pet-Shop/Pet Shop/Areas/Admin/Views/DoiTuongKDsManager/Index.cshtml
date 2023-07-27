@@ -1,0 +1,108 @@
+﻿@model PagedList.IPagedList<Pet_Shop.Models.DoiTuongKD>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin_PetShop.cshtml";
+}
+<h2>Sản phẩm</h2>
+@*<p>
+    @Html.ActionLink("Thêm mới", "Create")
+</p>*@
+
+<table class="table">
+    <tr>
+        <th>
+            Đơn giá
+        </th>
+        <th>
+            Trạng thái
+        </th>
+        <th>
+            Giảm giá
+        </th>
+        <th>
+            Mô tả
+        </th>
+        <th>
+            Chi tiết
+        </th>
+        <th>
+            Ảnh đại diện
+        </th>
+        <th>
+            Tên dịch vụ
+        </th>
+        <th>
+            TÊn đồ dùng
+        </th>
+        <th>
+            Tên thú cưng
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.DonGia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TrangThai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GiamGia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MoTa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChiTiet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AnhDaiDien)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DichVu.TenDV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DoDungTC.TenDD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ThuCung.TenTC)
+        </th>
+        <th></th>*@
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @String.Format("{0:0,0}", item.DonGia)đ
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TrangThai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GiamGia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MoTa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChiTiet)
+            </td>
+            <td>
+                <img src="@Url.Content(item.AnhDaiDien)" width="50%" height="50%" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DichVu.TenDV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DoDungTC.TenDD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ThuCung.TenTC)
+            </td>
+        </tr>
+    }
+
+    @*@(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)*@
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page}))
+</table>
+@*@(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)*@
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page}))

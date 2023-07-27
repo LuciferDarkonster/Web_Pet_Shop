@@ -1,0 +1,22 @@
+﻿@model Pet_Shop.Models.LoaiThuCung
+
+@{
+    ViewBag.Title = "Loại Thú Cưng";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin_PetShop.cshtml";
+}
+
+<div >
+    <div>
+        <h4>Thông tin thú cưng</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.TenLoai) :  @Html.DisplayFor(model => model.TenLoai)
+            </dt>
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Trở lại danh sách", "Index")
+    </p>
+
+</div>

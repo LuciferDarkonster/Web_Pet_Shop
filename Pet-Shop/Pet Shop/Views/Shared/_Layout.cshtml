@@ -1,0 +1,196 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>PetShop</title>
+    <link rel="shortcut icon" href="~/ImagesProduct/icon.jpg" type="image/x-icon">
+    <link href="~/Theme/css/StyleSheet.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <!------------------------------- <header> ------------------------------->
+    <div class="header">
+        <div class="logo">
+            <a href="@Url.Action("Index", "Home")"><img src="/Theme/images/Logo.png" /></a>
+        </div>
+        <div class="menu">
+            <li>@Html.ActionLink("Trang Chủ", "Index", "Home")</li>
+            <li>
+                <a>@Html.ActionLink("Sản Phẩm", "DoiTuongKD", "Home")</a>
+                @*<ul class="sub-menu columm">
+                <li class="menu-category">
+                    <a href="">VỆ SINH & CHĂM SÓC</a>
+                    <ul>
+                        <li><a href="">Khay & Nhà vệ sinh</a></li>
+                        <li><a href="">Cát vệ sinh cho mèo</a></li>
+                        <li><a href="">Sữa tắm & Xịt dưỡng</a></li>
+                        <li><a href="">Lược chải lông & Kềm cắt móng</a></li>
+                    </ul>
+                </li>
+                <li class="menu-category">
+                    <a href="">THỨC ĂN CHO CHÓ</a>
+                    <ul>
+                        <li><a href="">Thức ăn hạt khô</a></li>
+                        <li><a href="">Pate & Nước sốt</a></li>
+                    </ul>
+                </li>
+                <li class="menu-category">
+                    <a href="">ĐỒ DÙNG & PHỤ KIỆN</a>
+                    <ul>
+                        <li><a href="">Quần áo & Trang sức</a></li>
+                        <li><a href="">Vòng cổ & Dây dắt</a></li>
+                        <li><a href="">Túi xách & Balo đựng mèo</a></li>
+                        <li><a href="">Lồng vận chuyển mèo</a></li>
+                    </ul>
+                </li>
+                <li class="menu-category">
+                    <a href="">THỨC ĂN CHO MÈO</a>
+                    <ul>
+                        <li><a href="">Thức ăn hạt khô</a></li>
+                        <li><a href="">Pate & Nước sốt</a></li>
+                    </ul>
+                </li>
+                <li class="menu-category">
+                    <a href="">NHÀ, CHUỒNG & NỆM</a>
+                    <ul>
+                        <li><a href="">Nhà cho mèo</a></li>
+                        <li><a href="">Trụ cột & bàn cào móng</a></li>
+                        <li><a href="">Ổ nệm & Thảm đệm</a></li>
+                    </ul>
+                </li>
+                <li class="menu-category">
+                    <a href="">THUỐC THÚ Y</a>
+                    <ul>
+                        <li><a href="">Tẩy xổ giun sán</a></li>
+                        <li><a href="">Trị ve rận & Bọ chét</a></li>
+                    </ul>
+                </li>
+            </ul>*@
+            </li>
+            <li>@Html.ActionLink("Thú cưng", "ThuCung", "Home")</li>
+            <li>@Html.ActionLink("Dịch vụ", "DichVu", "Home")</li>
+            <li>@Html.ActionLink("Giới thiệu", "Introduce", "Home")</li>
+            <li><a href="https://zalo.me/0963450084" target="_blank">Liên hệ</a></li>
+        </div>
+        <div class="others">
+            <li class="collapse navbar-collapse d-sm-inline-flex justify-content-between"><div class="row">@Html.Partial("_LoginPartial")</div></li>
+            <li><a class="fas fa-shopping-cart" href="@Url.Action("GioHang","GioHang")"></a></li>
+        </div>
+    </div>
+
+    <div>
+        @RenderBody()
+    </div>
+    <!------------------------------- <contact-button> ------------------------------->
+    <div class="contact-button">
+        <button onclick="topFunction()" id="myBtn" title="Go to top">&#94;</button>
+        <a href="https://zalo.me/0345438160" target="_blank"><button id="myZalo">Zalo</button></a>
+        <a href="tel://0345438160" target="_blank"><button id="myCall"><i class="fas fa-phone"></i></button></a>
+    </div>
+    <!------------------------------- <footer> ------------------------------->
+    <div class="footer">
+        <div class="footer-top row">
+            <div class="footer-left row">
+                <div class="footer-left-img">
+                    <img src="/Theme/images/Logo.png" />
+                </div>
+                <div class="footer-left-item">
+                    <h1>Shop thú cưng Pet Shop</h1>
+                    <p>Email: petworld@gmail.com.</p>
+                    <p>
+                        Liên hệ: 096857463.
+                        <a href="" class="fab fa-facebook-square"></a>
+                        <a href="" class="fab fa-instagram"></a>
+                    </p>
+
+                </div>
+            </div>
+            <div class="footer-right">
+                <div class="footer-right-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125409.77948296019!2d106.53850631640626!3d10.807053000000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174d93fb381e671%3A0x85509c9a1ac479c1!2sKATA%20SHOP!5e0!3m2!1svi!2s!4v1678948125059!5m2!1svi!2s" frameborder="0" style="border:0; width: 100%;" allowfullscreen=""></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <hr>
+            ©Bản quyền thuộc về shop thú cưng kata
+        </div>
+    </div>
+    <script>
+        @RenderSection("scripts", required: false)
+        const left = document.querySelector(".left img")
+        const right = document.querySelector(".right img")
+        if (left) {
+            left.addEventListener("click", function () {
+                document.querySelector(".body-page-service-bottom-left-m-ct1").style.display = "block"
+                document.querySelector(".body-page-service-bottom-left-m-ct2").style.display = "none"
+                document.querySelector(".body-page-service-bottom-right-ct1").style.display = "block"
+                document.querySelector(".body-page-service-bottom-right-ct2").style.display = "none"
+            })
+        }
+        if (right) {
+            right.addEventListener("click", function () {
+                document.querySelector(".body-page-service-bottom-left-m-ct1").style.display = "none"
+                document.querySelector(".body-page-service-bottom-left-m-ct2").style.display = "block"
+                document.querySelector(".body-page-service-bottom-right-ct1").style.display = "none"
+                document.querySelector(".body-page-service-bottom-right-ct2").style.display = "block"
+            })
+        }
+        const header = document.querySelector(".header")
+        window.addEventListener("scroll", function () {
+            x = window.pageYOffset;
+            if (x > 0) {
+                header.classList.add("sticky")
+            }
+            else {
+                header.classList.remove("sticky")
+            }
+        })
+        const imgPosition = document.querySelectorAll(".aspect-ratio-169 img")
+        const imgContainer = document.querySelector('.aspect-ratio-169')
+        const dotItem = document.querySelectorAll(".dot")
+        let index = 0
+        let imgNuber = imgPosition.length
+        console.log(imgPosition);
+        imgPosition.forEach(function (image, index) {
+            image.style.left = index * 100 + "%"
+            dotItem[index].addEventListener("click", function () {
+                slider(index)
+            })
+        })
+        function imgSlide() {
+            index++;
+            console.log(index)
+            if (index >= imgNuber) { index = 0 }
+            slider(index)
+        }
+        function slider(index) {
+            imgContainer.style.left = "-" + index * 100 + "%"
+            const dotActive = document.querySelector('.active')
+            dotActive.classList.remove("active")
+            dotItem[index].classList.add("active")
+        }
+        setInterval(imgSlide, 5000)
+        window.onscroll = function () { scrollFunction() };
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("myBtn").style.display = "block";
+                document.getElementById("myZalo").style.display = "block";
+                document.getElementById("myCall").style.display = "block";
+            } else {
+                document.getElementById("myBtn").style.display = "none";
+            }
+        }
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+</body>
+</html>

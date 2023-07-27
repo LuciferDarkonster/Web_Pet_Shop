@@ -1,0 +1,32 @@
+﻿@model Pet_Shop.Models.HangSX
+
+@{
+    ViewBag.Title = "Hãng Sản Xuất";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin_PetShop.cshtml";
+}
+<div>
+    <h4> Xóa hãng sản xuất này ?</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenNSX) : @Html.DisplayFor(model => model.TenNSX)
+        </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.DiaChi) :  @Html.DisplayFor(model => model.DiaChi)
+        </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.SuatXu) :  @Html.DisplayFor(model => model.SuatXu)
+        </dt>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa nó" class="btn btn-default" /> <br />
+            @Html.ActionLink("Trở lại danh sách", "Index")
+        </div>
+    }
+</div>

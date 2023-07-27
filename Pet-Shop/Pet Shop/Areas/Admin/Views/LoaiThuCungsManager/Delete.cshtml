@@ -1,0 +1,29 @@
+﻿@model Pet_Shop.Models.LoaiThuCung
+
+@{
+    ViewBag.Title = "Loại Thú Cưng";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin_PetShop.cshtml";
+}
+
+<div >
+    <div>
+        <h4>Xóa thú cưng này ?</h4>
+        <hr />
+        <dl class="dl-horizontal" style="padding-bottom:5px">
+            <dt>
+                @Html.DisplayNameFor(model => model.TenLoai) :  @Html.DisplayFor(model => model.TenLoai)
+            </dt>
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Xóa nó" class="btn btn-default" /> |
+                @Html.ActionLink("Trở lại danh sách", "Index")
+            </div>
+        }
+    </div>
+</div>
+

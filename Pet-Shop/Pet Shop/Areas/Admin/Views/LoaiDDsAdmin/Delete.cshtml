@@ -1,0 +1,26 @@
+﻿@model Pet_Shop.Models.LoaiDD
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin_PetShop.cshtml";
+}
+
+<div>
+    <h4>Xóa loại đồ dùng n</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenLoaiDD) : @Html.DisplayFor(model => model.TenLoaiDD)
+        </dt>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+<div class="form-actions no-color">
+    <input type="submit" value="Xóa nó" class="btn btn-default" /> <br />
+        @Html.ActionLink("Trở lại danh sách", "Index")
+</div>
+    }
+</div>
